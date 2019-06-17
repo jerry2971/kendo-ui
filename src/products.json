@@ -1,0 +1,19 @@
+[{
+    "ProductID": 1,
+    "ProductName": "Chai",
+    "UnitsInStock": 39,
+    "Discontinued": false,
+    "Category": {
+        "CategoryID": 1,
+        "CategoryName": "Beverages"
+    }
+}, {
+    "ProductID": 2,
+    "ProductName": "Chang",
+    "UnitsInStock": 21,
+    "Discontinued": true,
+    "Category": {
+        "CategoryID": 2,
+        "CategoryName": "Produce"
+    }
+}]
