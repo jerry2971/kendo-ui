@@ -1,5 +1,6 @@
 import React from 'react';
-import DataTable from './dataTable.js';
+import DataTable from './dataTable';
+
 function App() {
   return (
     <div>

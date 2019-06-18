@@ -46,7 +46,7 @@ class DataTable extends React.Component {
         data={this.state.gridData}
         onRowClick={this.rowEdit}
         onItemChange={this.itemChange}
-        editField="inEdit"
+        editField='inEdit'
       >
         <GridToolbar>
           <div onClick={this.exitEdit}>
@@ -61,11 +61,11 @@ class DataTable extends React.Component {
             </button>
           </div>
         </GridToolbar >
-        <Column field="ProductID" title="ID" width="50px" editable={false}/>
-        <Column field="ProductName" title="Product Name" width="160px" />
-        <Column field="UnitsInStock" title="Units In Stock" width="160px" editor="numeric"/>
-        <Column field="Discontinued" width="120px" cell={this.booleanCell} />
-        <Column field="Category.CategoryName" title="CategoryName" width="150px" />
+        <Column field='ProductID' title='ID' width='50px' editable={false}/>
+        <Column field='ProductName' title='Product Name' width='160px' />
+        <Column field='UnitsInStock' title='Units In Stock' width='160px' editor='numeric'/>
+        <Column field='Discontinued' width='120px' cell={this.booleanCell} />
+        <Column field='Category.CategoryName' title='CategoryName' width='150px' />
       </Grid>
     );
   }
@@ -83,12 +83,12 @@ class DataTable extends React.Component {
               this.setState({ gridData: obj, changed: true });
             }
           }
-          type="checkbox"
+          type='checkbox'
           checked={props.dataItem[props.field]} />
       </td>
     ) : (
       <td>
-        <input disabled type="checkbox" checked={props.dataItem[props.field]} />
+        <input disabled type='checkbox' checked={props.dataItem[props.field]} />
       </td>
     );
   }

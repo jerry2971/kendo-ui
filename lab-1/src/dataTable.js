@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import { Grid, GridColumn as Column } from '@progress/kendo-react-grid';
 // 產品目錄(資料)
 import products from './products.json';
@@ -18,17 +18,17 @@ class DataTable extends React.Component {
         style={{ height: '400px',width:'650px' }}
         data={this.state.gridData}
       >
-        <Column field="ProductID" title="ID" width="50px" />
-        <Column field="ProductName" title="Product Name" width="160px" />
-        <Column field="UnitsInStock" title="Units In Stock" width="160px"/>
-        <Column field="Discontinued" width="120px"
-          cell={(props) => (
+        <Column field='ProductID' title='ID' width='50px' />
+        <Column field='ProductName' title='Product Name' width='160px' />
+        <Column field='UnitsInStock' title='Units In Stock' width='160px'/>
+        <Column field='Discontinued' width='120px'
+          cell={(props) => {return (
             <td>
-              <input disabled type="checkbox" checked={props.dataItem[props.field]} />
+              <input disabled type='checkbox' checked={props.dataItem[props.field]} />
             </td>
-          )} 
+          );}} 
         />
-        <Column field="Category.CategoryName" title="CategoryName" width="150px" />
+        <Column field='Category.CategoryName' title='CategoryName' width='150px' />
         
       </Grid>
     );
