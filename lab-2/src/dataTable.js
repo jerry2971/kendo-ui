@@ -42,7 +42,7 @@ class DataTable extends React.Component {
   render() {
     return (
       <Grid
-        style={{ height: '400px', width: '650px' }}
+        style={{ height: '400px', width: '850px' }}
         data={this.state.gridData}
         onRowClick={this.rowEdit}
         onItemChange={this.itemChange}
@@ -61,11 +61,11 @@ class DataTable extends React.Component {
             </button>
           </div>
         </GridToolbar >
-        <Column field='ProductID' title='ID' width='50px' editable={false}/>
-        <Column field='ProductName' title='Product Name' width='160px' />
-        <Column field='UnitsInStock' title='Units In Stock' width='160px' editor='numeric'/>
-        <Column field='Discontinued' width='120px' cell={this.booleanCell} />
-        <Column field='Category.CategoryName' title='CategoryName' width='150px' />
+        <Column field='ProductID' title='ID' width='85px' editable={false}/>
+        <Column field='ProductName' title='Product Name' width='200px' />
+        <Column field='UnitsInStock' title='Units In Stock' width='180px' editor='numeric'/>
+        <Column field='Discontinued' width='180px' cell={this.booleanCell} />
+        <Column field='Category.CategoryName' title='CategoryName' width='200px' />
       </Grid>
     );
   }

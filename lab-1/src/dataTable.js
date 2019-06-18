@@ -18,17 +18,17 @@ class DataTable extends React.Component {
         style={{ height: '400px',width:'650px' }}
         data={this.state.gridData}
       >
-        <Column field='ProductID' title='ID' width='50px' />
-        <Column field='ProductName' title='Product Name' width='160px' />
-        <Column field='UnitsInStock' title='Units In Stock' width='160px'/>
-        <Column field='Discontinued' width='120px'
+        <Column field='ProductID' title='ID' width='85px' />
+        <Column field='ProductName' title='Product Name' width='200px' />
+        <Column field='UnitsInStock' title='Units In Stock' width='180px'/>
+        <Column field='Discontinued' width='180px'
           cell={(props) => {return (
             <td>
               <input disabled type='checkbox' checked={props.dataItem[props.field]} />
             </td>
           );}} 
         />
-        <Column field='Category.CategoryName' title='CategoryName' width='150px' />
+        <Column field='Category.CategoryName' title='CategoryName' width='200px' />
         
       </Grid>
     );
