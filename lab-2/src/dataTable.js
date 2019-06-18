@@ -34,15 +34,15 @@ class DataTable extends React.Component {
     this.state = {
       gridData: JSON.parse(JSON.stringify(products)), // deep copy
       saveGridData: JSON.parse(JSON.stringify(products)), // deep copy
-      changed: false,
-      editItem: null
+      changed: false, // 內文是否有被更動過
+      editItem: null // 保存當前編輯行
     };
   }
 
   render() {
     return (
       <Grid
-        style={{ height: '400px', width: '850px' }}
+        style={{ height: '400px', width: '970px' }}
         data={this.state.gridData}
         onRowClick={this.rowEdit}
         onItemChange={this.itemChange}
@@ -66,6 +66,7 @@ class DataTable extends React.Component {
         <Column field='UnitsInStock' title='Units In Stock' width='180px' editor='numeric'/>
         <Column field='Discontinued' width='180px' cell={this.booleanCell} />
         <Column field='Category.CategoryName' title='CategoryName' width='200px' />
+        <Column title="Edit"  width='120px' cell={this.onDeleteItem}/>
       </Grid>
     );
   }
@@ -92,7 +93,22 @@ class DataTable extends React.Component {
       </td>
     );
   }
-
+  onDeleteItem=(eventItem)=>{
+    return (<td>
+      <button onClick={()=>{
+        const data = this.state.gridData;
+        const delIndex = data.findIndex(p => {return p.ProductID === eventItem.dataItem.ProductID;});
+        if (delIndex >-1){
+          if(window.confirm('Press a button')){
+            data.splice(delIndex,1);
+            this.setState({gridData: data, changed: true});
+          }
+        }
+      }}>
+        remove
+      </button>
+    </td>);
+  }
   // function
   onSaveClick = () => {
     const datas = this.state.gridData.map(

@@ -32,6 +32,7 @@ class DataTable extends React.Component {
     this.onSaveClick = this.onSaveClick.bind(this);
     this.onCancelClick = this.onCancelClick.bind(this);
     this.onAddClick = this.onAddClick.bind(this);
+    this.onDeleteItem = this.onDeleteItem.bind(this);
     this.state = {
       gridData: JSON.parse(JSON.stringify(products)), // deep copy
       saveGridData: JSON.parse(JSON.stringify(products)), // deep copy
@@ -45,7 +46,7 @@ class DataTable extends React.Component {
   render() {
     return (
       <Grid
-        style={{ height: '400px', width: '850px' }}
+        style={{ height: '400px', width: '970px' }}
         data={filterBy(orderBy(this.state.gridData,this.state.sort),this.state.filter)}
         onRowClick={this.rowEdit}
         onItemChange={this.itemChange}
@@ -80,6 +81,7 @@ class DataTable extends React.Component {
         <Column field='UnitsInStock' title='Units In Stock' width='180px' editor='numeric' filter='numeric'/>
         <Column field='Discontinued' width='180px' cell={this.booleanCell} filter='boolean' />
         <Column field='Category.CategoryName' title='CategoryName' width='200px' />
+        <Column title="Edit"  width='120px' cell={this.onDeleteItem} filterable={false} />
       </Grid>
     );
   }
@@ -106,7 +108,22 @@ class DataTable extends React.Component {
       </td>
     );
   }
-
+  onDeleteItem=(eventItem)=>{
+    return (<td>
+      <button onClick={()=>{
+        const data = this.state.gridData;
+        const delIndex = data.findIndex(p => {return p.ProductID === eventItem.dataItem.ProductID;});
+        if (delIndex >-1){
+          if(window.confirm('Press a button')){
+            data.splice(delIndex,1);
+            this.setState({gridData: data, changed: true});
+          }
+        }
+      }}>
+        remove
+      </button>
+    </td>);
+  }
   // function
   onSaveClick = () => {
     const datas = this.state.gridData.map(
